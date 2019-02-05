@@ -14,6 +14,6 @@ run it.
 
 
 # NOTICE
-The developer is stupid, and doesn't know how to do argument parsing in Python. This means, for now, the
+The developer (That's me!) is stupid, and doesn't know how to do argument parsing in Python. This means, for now, the
 program will prompt you to enter some required parameters when run.
 Argument parsing is down the pipeline, but for now, the program doesn't have any.
