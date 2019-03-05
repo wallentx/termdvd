@@ -4,7 +4,7 @@ from time import sleep #I don't feel like explaining why I need this, because I 
 from random import randint,uniform #Using randint for randomizing DVD color, and uniform for randomizing the DVD's velocity vecor.
 from sys import stderr #This should allow me to print to stderr, so I can write custom error messages.
 
-version = "2.0-development" #The program's version number is stored here.
+version = "2.0" #The program's version number is stored here.
 
 import argparse #ARGUMENT PARSING!! :D
 ap = argparse.ArgumentParser(description="A program that simulates the bouncing DVD screensaver in the terminal.")
