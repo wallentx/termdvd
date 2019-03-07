@@ -27,7 +27,7 @@ If you want the DVD screen to be a diffrent size, it can be changed by typing th
 
 will make the DVD screen be 30 rows long and 60 columns wide.
 
-If you only want to change the row count, you only need to issue on argument. For example:
+If you only want to change the row count, you only need to issue one argument. For example:
 
 `termdvd.py 30`
 
