@@ -6,7 +6,11 @@ Now even people without a display server can enjoy the thrill of watching the DV
 # Compatability info
 This program requires at least Python version 3.3. If you attempt to run this program on Python 3.2 or lower, it will not work. In a future release, I may get support for older Python 3 versions working. However, I have no plans for getting Python 2 support.
 
-This program should work on any OS that has Python 3.3 (or newer) ported to it. This includes Windows, macOS, Linux, and BSD.
+If you're using a Unix system (like Linux, macOS, BSD, etc.), the program should work just fine.
+
+If you're using a Windows system, the program will only correctly work on Windows 10 or newer. This is because my program
+makes heavy use of ANSI escape codes, which aren't supported on older versions of Windows. If you attempt to run this program
+on one of those versions, then it will just display a bunch of jumbled text.
 
 # Getting the application
 Before downloading the program, make sure you have the correct version of Python on your machine. (see "compatibility info" above.)
