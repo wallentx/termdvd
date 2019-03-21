@@ -50,5 +50,5 @@ There's also a few optional arguments. They are:
 
 # Changes in version 2.1
 - Added compatability with older versions of Windows. (in other words, anything older than Windows 10)
-- The DVD icon looks slightly diffrent now.
+- The DVD icon looks slightly different now.
 - The program now displays my username correctly when the --version argument is given. It didn't in the previous version.
