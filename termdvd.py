@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
-from os import system,name #These modules are needed to make a function that clears the screen that works on both posix and nt systems.
+version = "2.1" #The program's version number is stored here.
+
+from os import system,name #os.system is used in the cls() function, and os.name is used to occasionally determine what OS is being used.
 from time import sleep #I don't feel like explaining why I need this, because I don't know what I'll use it for yet.
 from random import randint,uniform #Using randint for randomizing DVD color, and uniform for randomizing the DVD's velocity vecor.
 from sys import stderr #This should allow me to print to stderr, so I can write custom error messages.
 
-version = "2.0" #The program's version number is stored here.
+if(name == "nt"): #If the computer is runnnig Windows, attempt to import the colorama module. This module makes ANSI escape codes work on Windows.
+    try:
+        import colorama
+
+    except ImportError: #If importing colorama failed, then print an error message telling the user to install the module, and terminate.
+        print("error: colorama module not found! Please install it by typing:\npip install colorama",file=stderr)
+        exit()
+
+    colorama.init() #Starts colorama, so it can start doing its work.
 
 import argparse #ARGUMENT PARSING!! :D
 ap = argparse.ArgumentParser(description="A program that simulates the bouncing DVD screensaver in the terminal.")
@@ -19,7 +29,7 @@ args = ap.parse_args()
 
 if(args.version): #If the version flag is given, display the version name and quit.
     print("termdvd, version " + version)
-    print("written by MrCatFace885") #Should I use my real name here, or my online alias?
+    print("written by MrCatFace8885") #I'm too much of a coward to use my real name, so I'll just use my online alias.
     exit()
 
 #If the rows or columns weren't given, fill them in with a default value.
@@ -28,22 +38,19 @@ if(args.rows == None):
 elif(args.columns == None):
     args.columns = 40
 
-#Checking to see if the arguments given are big enough.
-errors = False
-
+#Checking to see if the arguments given are big enough, and if they aren't then give an error and terminate.
 if(args.rows < 3):
     print("error: There must be at least 3 rows!",file=stderr)
-    errors = True
+    exit()
 
 if(args.columns < 5):
     print("error: There must be at least 5 columns!",file=stderr)
-    errors = True
-
-if(errors):
     exit()
 
+
+
 def spriteud(): #Run this function to update the DVD sprite when the DVD color changes.
-    dvd["sprite"] = "\033[1;7;3" + str(dvd["color"]) + "mDVD\033[0m"
+    dvd["sprite"] = "\033[30;10" + str(dvd["color"]) + "mDVD\033[0m"
 
 
 
@@ -78,17 +85,17 @@ def render(): #re-draw the DVD logo.
     dvd["x_rend"] = int(round(dvd["x_pos"],0)) #These are only used for rendering the DVD, and nothing else.
     dvd["y_rend"] = int(round(dvd["y_pos"],0))
 
-    print("\033[{0};{1}H{2}\033[{3};0H".format(dvd["y_rend"] + 2,dvd["x_rend"] + 3,dvd["sprite"],screen["rows"] + 3),end="",flush=True) #This makes the cursor jump to the spot it needs to be at and then prints the DVD logo.
+    print("\033[{0};{1}H{2}\033[{3};1H".format(dvd["y_rend"] + 2,dvd["x_rend"] + 3,dvd["sprite"],screen["rows"] + 3),end="",flush=True) #This makes the cursor jump to the spot it needs to be at and then prints the DVD logo.
 
 
 
 def render_box(): #Renders just the box the DVD bounces around in.
-    print("\033[7m    " + " " * screen["columns"]) #Prints the top of the box.
+    print("\033[47m    " + " " * screen["columns"]) #Prints the top of the box.
 
     for row_num in range (screen["rows"]): #Prints the sides of the box. (each one)
-        print("  \033[0m" + " " * screen["columns"] + "\033[7m  ")
+        print("  \033[0m" + " " * screen["columns"] + "\033[47m  ")
 
-    print("\033[7m    " + " " * screen["columns"] + "\033[0m") #Prints the bottom of the box.
+    print("\033[47m    " + " " * screen["columns"] + "\033[0m") #Prints the bottom of the box.
 
 
 
@@ -114,7 +121,7 @@ def main(): #The engine of the DVD physics.
                 spriteud()
 
     except KeyboardInterrupt: #If ^C is pressed, then...
-        print("\033[{0};0HGoodbye. \033[31m<3\033[0m".format(screen["rows"] + 3)) #Print a message saying "goodbye" with a little love heart at the end.
+        print("\033[{0};1HGoodbye. \033[31m<3\033[0m".format(screen["rows"] + 3)) #Print a message saying "goodbye" with a little love heart at the end.
 
 
 

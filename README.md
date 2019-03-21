@@ -8,9 +8,12 @@ This program requires at least Python version 3.3. If you attempt to run this pr
 
 If you're using a Unix system (like Linux, macOS, BSD, etc.), the program should work just fine.
 
-If you're using a Windows system, the program will only correctly work on Windows 10 or newer. This is because my program
-makes heavy use of ANSI escape codes, which aren't supported on older versions of Windows. If you attempt to run this program
-on one of those versions, then it will just display a bunch of jumbled text.
+If you're using a Windows system, the program should work on Windows XP or newer, but you'll need to install the colorama python module first.
+This can be done using pip, with the following command:
+
+`pip install colorama`
+
+You can learn more about colorama here: https://pypi.org/project/colorama
 
 # Getting the application
 Before downloading the program, make sure you have the correct version of Python on your machine. (see "compatibility info" above.)
@@ -44,3 +47,8 @@ There's also a few optional arguments. They are:
 -v (--version): Displays the program's version number and then exits.
 -c (--no_color): Makes the DVD icon only colored white.
 ```
+
+# Changes in version 2.1
+- Added compatability with older versions of Windows. (in other words, anything older than Windows 10)
+- The DVD icon looks slightly diffrent now.
+- The program now displays my username correctly when the --version argument is given. It didn't in the previous version.
