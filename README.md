@@ -53,6 +53,6 @@ There's also a few optional arguments. They are:
 ```
 
 # Changes in version 2.2
-- Added compatability with older versions of Windows. (in other words, anything older than Windows 10)
-- The DVD icon looks slightly different now.
-- The program now displays my username correctly when the --version argument is given. It didn't in the previous version.
+- The colorama module is no longer required for Windows 10 users!
+- The DVD screen is refreshed whenever the teminal is resized. This prevents it from glitching out when resizing happens. (work in progress)
+- Organized the code a little bit, I think. It's still not as good as it could be, but hey, at least I tried. ;_;
