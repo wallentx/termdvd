@@ -1,3 +1,7 @@
+# THIS IS A DEVELOPMENT BUILD
+Please keep in mind that this is not the final version of termdvd 2.2. This is just here so you can see what I've been working on recently in terms of this project. I advise gettting the program from the master branch, but if
+you're curious, this branch is also an option.
+
 # termdvd
 A program that simulates the DVD video screensaver in the terminal.
 
@@ -48,7 +52,7 @@ There's also a few optional arguments. They are:
 -c (--no_color): Makes the DVD icon only colored white.
 ```
 
-# Changes in version 2.1
+# Changes in version 2.2
 - Added compatability with older versions of Windows. (in other words, anything older than Windows 10)
 - The DVD icon looks slightly different now.
 - The program now displays my username correctly when the --version argument is given. It didn't in the previous version.
