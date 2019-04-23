@@ -10,9 +10,10 @@ Now even people without a display server can enjoy the thrill of watching the DV
 # Compatability info
 This program requires at least Python version 3.3. If you attempt to run this program on Python 3.2 or lower, it will not work. In a future release, I may get support for older Python 3 versions working. However, I have no plans for getting Python 2 support.
 
-If you're using a Unix system (like Linux, macOS, BSD, etc.), the program should work just fine.
+If you're using a Unix system (like Linux, macOS, BSD, etc.), the program should work just fine out of the box.
+The same also applies to Windows 10 users.
 
-If you're using a Windows system, the program should work on Windows XP or newer, but you'll need to install the colorama python module first.
+If you're using Windows 8.1 or older, you will first need to install the colorama module for this program to work.
 This can be done using pip, with the following command:
 
 `pip install colorama`
@@ -24,7 +25,7 @@ Before downloading the program, make sure you have the correct version of Python
 
 To download the program, go to a command line and clone the repository using git:
 
-`git clone https://github.com/MrCatFace8885/termdvd`
+`git clone https://github.com/MrCatFace8885/termdvd -b devel`
 
 Alternatively, you can also click the green "clone or download" button, and then click "Download ZIP" if you're in a web browser.
 
