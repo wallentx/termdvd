@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+import os
+from os import system,name
+from time import sleep
+from random import randint,uniform
+from sys import stderr
+
+
+rowsc, columnsc = os.popen('stty size', 'r').read().split()
+rows = int(rowsc) - 4
+columns = int(columnsc) - 4
+
+def spriteud():
+    dvd["sprite"] = "\033[30;10" + str(dvd["color"]) + "mDVD\033[0m"
+
+def colorud(): 
+    return randint(1,7)
+
+def cls():
+    system("clear")
+
+screen = {"rows":int(rows),"columns":int(columns)}
+
+dvd = {"x_vel":uniform(0.2,0.5),"y_vel":uniform(0.1,0.25),"x_pos":1.0,"y_pos":1.0,"color":colorud(),"sprite":"","x_rend":1,"y_rend":1}
+spriteud()
+
+def render():
+    print("\033[{0};{1}H   ".format(dvd["y_rend"] + 2,dvd["x_rend"] + 3),end="")
+    dvd["x_rend"] = int(round(dvd["x_pos"],0))
+    dvd["y_rend"] = int(round(dvd["y_pos"],0))
+    print("\033[{0};{1}H{2}\033[{3};1H".format(dvd["y_rend"] + 2,dvd["x_rend"] + 3,dvd["sprite"],screen["rows"] + 3),end="",flush=True)
+
+def render_box():
+    print("\033[47m    " + " " * screen["columns"])
+    for row_num in range (screen["rows"]):
+        print("  \033[0m" + " " * screen["columns"] + "\033[47m  ")
+    print("\033[47m    " + " " * screen["columns"] + "\033[0m")
+
+def main():
+    try:
+        while(True):
+            render()
+            sleep(0.03)
+            dvd["x_pos"] += dvd["x_vel"]
+            dvd["y_pos"] += dvd["y_vel"]
+            if(dvd["x_pos"] >= screen["columns"] - 3 or dvd["x_pos"] <= 0):
+                dvd["x_vel"] *= -1
+                dvd["color"] = colorud()
+                spriteud()
+            if(dvd["y_pos"] >= screen["rows"] - 1 or dvd["y_pos"] <= 0):
+                dvd["y_vel"] *= -1
+                dvd["color"] = colorud()
+                spriteud()
+    except KeyboardInterrupt:
+        print("\033[{0};1HGoodbye. \033[31m<3\033[0m".format(screen["rows"] + 3))
+
+cls()
+render_box()
+main()
